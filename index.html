@@ -26,6 +26,24 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 살짝 그림자 */
         }
         
+        /* 인스타그램 버튼 디자인 */
+        .insta-btn {
+            display: inline-block; /* 버튼 모양 잡기 */
+            margin-top: 15px;      /* 위쪽 글자와 간격 띄우기 */
+            padding: 10px 20px;    /* 버튼 크기 (통통하게) */
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); /* 인스타 무지개색 */
+            color: white;          /* 글자색 하양 */
+            text-decoration: none; /* 밑줄 없애기 */
+            border-radius: 30px;   /* 둥글둥글하게 */
+            font-weight: bold;     /* 글자 굵게 */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* 그림자 */
+            transition: 0.3s;      /* 부드러운 효과 */
+        }
+        .insta-btn:hover { 
+            transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
+            opacity: 0.9; 
+        }
+        
         /* 2. 상단 메뉴바 */
         nav { 
             background-color: #222; 
@@ -117,6 +135,9 @@
             <p>안녕하세요! <strong>Actopia</strong>의 개인 웹사이트입니다.</p>
             <p>이곳에 제 인스타 툰 스타일의 만화를 업로드합니다.</p>
             <p>재밌게 봐주세요!</p>
+            <a href="https://www.instagram.com/dol_bok" target="_blank" class="insta-btn">
+                📸 Instagram 구경가기
+            </a>
         </div>
         
         <h2 id="comics">🎨 만화 목록</h2>
@@ -150,4 +171,5 @@
 </body>
 
 </html>
+
 
