@@ -101,39 +101,67 @@
             color: #444;
         }
 
-        /* 5. 만화 목록 (바둑판) */
+        /* 5. 만화 목록 (1열 배너 스타일로 변경) */
         .comic-list { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px; 
+            display: flex; 
+            flex-direction: column; /* 위에서 아래로 한 줄씩 */
+            gap: 25px; /* 배너 사이 간격 넓게 */
+            padding: 10px;
         }
 
-        /* 만화 칸 디자인 */
+        /* 만화 배너 박스 */
         .comic-item { 
             cursor: pointer; 
             border: 1px solid #ddd;
-            border-radius: 10px;
+            border-radius: 15px; /* 모서리 둥글게 */
             overflow: hidden;
             background: #fff;
-            transition: transform 0.2s; 
-        }
-        .comic-item:hover { transform: scale(1.03); } 
-
-        /* 썸네일 이미지 설정 */
-        .comic-item img { 
-            width: 100%; 
-            height: 200px; /* 높이 고정 */
-            object-fit: cover; /* 꽉 차게 */
-            display: block;
-        }
-
-        /* 만화 제목 */
-        .comic-item p { 
-            margin: 10px 0; 
-            font-weight: bold; 
-            font-size: 14px;
+            
+            /* ★ 핵심: 가로 배치 (왼쪽 그림 / 오른쪽 글자) */
+            display: flex; 
+            height: 160px; /* 높이는 짧고 가로는 길게 고정 */
+            
+            transition: transform 0.2s, box-shadow 0.2s; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         
+        .comic-item:hover { 
+            transform: translateY(-3px); /* 살짝 위로 떠오름 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* 그림자 진하게 */
+        }
+
+        /* 썸네일 이미지 (왼쪽 절반 차지) */
+        .comic-item img { 
+            width: 45%;   /* 가로의 45%만 차지 */
+            height: 100%; /* 높이는 꽉 채우기 */
+            object-fit: cover; /* 찌그러지지 않고 예쁘게 잘림 */
+            border-right: 1px solid #eee; /* 그림과 글자 사이 구분선 */
+        }
+
+        /* 제목과 설명이 들어갈 공간 (오른쪽 절반) */
+        .comic-info {
+            width: 55%;   /* 나머지 공간 차지 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 위아래 가운데 정렬 */
+            padding: 0 20px; /* 글자 양옆 여백 */
+            text-align: left; /* 글자 왼쪽 정렬 */
+        }
+
+        /* 만화 제목 글자 */
+        .comic-info h3 { 
+            margin: 0 0 10px 0; 
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* 만화 부가 설명 (날짜나 짧은 소개 등) */
+        .comic-info p { 
+            margin: 0; 
+            font-size: 13px;
+            color: #888;
+        }
+
         /* 6. 글자 박스 */
         .text-box {
             line-height: 1.0;
@@ -168,27 +196,33 @@
             </div>
         </div>
         
-        <h2 id="comics">🎨 만화 목록</h2>
+<h2 id="comics">🎨 만화 목록</h2>
         <div class="comic-list">
             
             <div class="comic-item" onclick="location.href='episode00.html'">
                 <img src="00/cover.jpg" alt="0화 표지">
-                <p>EP.00 악당들은 유토피아를 꿈꾼다</p>
+                <div class="comic-info">
+                    <h3>EP.00 악당들은 유토피아를 꿈꾼다</h3>
+                    <p>Actopia의 시작</p> </div>
             </div>
 
             <div class="comic-item" onclick="location.href='episode01.html'">
                 <img src="01/cover.jpg" alt="1화 표지">
-                <p>EP.01 나뭇가지</p>
+                <div class="comic-info">
+                    <h3>EP.01 나뭇가지</h3>
+                    <p>2024.00.00 업로드</p> </div>
             </div>
 
             <div class="comic-item" onclick="location.href='episode02.html'">
                 <img src="02/cover.jpg" alt="2화 표지">
-                <p>EP.02 동물을 사랑하긴 하는데.</p>
+                <div class="comic-info">
+                    <h3>EP.02 동물을 사랑하긴 하는데.</h3>
+                    <p>본격적인 이야기 전개</p> </div>
             </div>
 
         </div>
 
-        <h2 id="etc">🎸 기타(미정)</h2>
+<h2 id="etc">🎸 기타(미정)</h2>
         <div class="text-box">
             <p>나중에 공지사항이나 굿즈 판매 등을 올릴 예정입니다.</p>
             <p>문의사항은 메일로 주세요!</p>
@@ -199,6 +233,7 @@
 </body>
 
 </html>
+
 
 
 
