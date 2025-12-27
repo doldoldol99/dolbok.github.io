@@ -194,6 +194,27 @@
             line-height: 1.0;
             color: #555;
         }
+
+        /*  모바일 화면(폭 768px 이하)일 때만 적용되는 설정 */
+        @media (max-width: 768px) {
+            
+            /* 1. 만화 제목 줄이기 */
+            .comic-info h3 {
+                font-size: 16px !important; /* PC(20px)보다 작게 */
+                margin-bottom: 5px !important; /* 제목과 설명 사이 간격 좁히기 */
+            }
+
+            /* 2. 설명 글자 줄이기 */
+            .comic-info p {
+                font-size: 12px !important; /* PC(14px)보다 작게 */
+            }
+
+            /* (선택사항) 모바일에서는 배너 높이도 살짝 줄여서 날렵하게 */
+            .comic-item {
+                height: 100px !important; /* PC(120px) -> 모바일(100px) */
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -259,6 +280,7 @@
 </body>
 
 </html>
+
 
 
 
