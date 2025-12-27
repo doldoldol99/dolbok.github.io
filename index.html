@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actopia의 만화 세상</title>
+    <style>
+        /* 1. 전체적인 디자인 */
+        body { 
+            margin: 0; 
+            font-family: 'Malgun Gothic', sans-serif;
+            text-align: center; 
+            background-color: #f0f0f0; 
+            color: #333; 
+        }
+        
+        /* 2. 상단 메뉴바 */
+        nav { 
+            background-color: #222; 
+            padding: 15px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+        }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            font-weight: bold; 
+            font-size: 16px;
+        }
+        nav a:hover { color: yellow; } 
+
+        /* 3. 내용 상자 */
+        .container { 
+            max-width: 600px; 
+            margin: 30px auto; 
+            padding: 20px; 
+            background: white; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+        
+        /* 4. 섹션 제목 */
+        h2 { 
+            border-bottom: 2px solid #eee; 
+            padding-bottom: 10px; 
+            margin-top: 40px; 
+            color: #444;
+        }
+
+        /* 5. 만화 목록 (바둑판) */
+        .comic-list { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+        }
+
+        /* 만화 칸 디자인 */
+        .comic-item { 
+            cursor: pointer; 
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            transition: transform 0.2s; 
+        }
+        .comic-item:hover { transform: scale(1.03); } 
+
+        /* 썸네일 이미지 설정 */
+        .comic-item img { 
+            width: 100%; 
+            height: 200px; /* 높이 고정 */
+            object-fit: cover; /* 꽉 차게 */
+            display: block;
+        }
+
+        /* 만화 제목 */
+        .comic-item p { 
+            margin: 10px 0; 
+            font-weight: bold; 
+            font-size: 14px;
+        }
+        
+        /* 6. 글자 박스 */
+        .text-box {
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">내 소개</a>
+        <a href="#comics">만화 목록</a>
+        <a href="#etc">기타</a>
+    </nav>
+
+    <div class="container">
+        
+        <h2 id="about">👋 내 소개</h2>
+        <div class="text-box">
+            <p>안녕하세요! <strong>Actopia</strong>의 개인 웹사이트입니다.</p>
+            <p>이곳에 제 인스타 툰 스타일의 만화를 업로드합니다.</p>
+            <p>재밌게 봐주세요!</p>
+        </div>
+
+        <h2 id="comics">🎨 만화 목록</h2>
+        <div class="comic-list">
+            
+            <div class="comic-item" onclick="location.href='view00.html'">
+                <img src="00/cover.jpg" alt="0화 표지">
+                <p>EP.00 프롤로그</p>
+            </div>
+
+            <div class="comic-item" onclick="location.href='view01.html'">
+                <img src="01/cover.jpg" alt="1화 표지">
+                <p>EP.01 시작</p>
+            </div>
+
+            <div class="comic-item" onclick="location.href='view02.html'">
+                <img src="02/cover.jpg" alt="2화 표지">
+                <p>EP.02 전개</p>
+            </div>
+
+        </div>
+
+        <h2 id="etc">🎸 기타(미정)</h2>
+        <div class="text-box">
+            <p>나중에 공지사항이나 굿즈 판매 등을 올릴 예정입니다.</p>
+            <p>문의사항은 메일로 주세요!</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제 2화 보기</title>
+    <style>
+        body { background: #222; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: white; }
+        
+        /* 인스타 툰 뷰어 틀 (핵심!) */
+        .insta-viewer {
+            width: 350px;       /* 인스타 느낌의 너비 */
+            aspect-ratio: 4/5;  /* 4:5 비율 고정 */
+            background: white;
+            
+            display: flex;      /* 가로로 배치 */
+            overflow-x: auto;   /* 넘치면 스크롤 생김 */
+            scroll-snap-type: x mandatory; /* 자석처럼 착착 붙는 기능 */
+            
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* 만화 이미지 각각의 설정 */
+        .insta-viewer img {
+            width: 100%;       /* 틀에 꽉 차게 */
+            height: 100%;      /* 틀에 꽉 차게 */
+            object-fit: cover; /* 비율 유지하며 꽉 채움 */
+            flex-shrink: 0;    /* 찌그러짐 방지 */
+            scroll-snap-align: start; /* 스크롤할 때 시작점에 딱 붙음 */
+        }
+
+        /* 뒤로가기 버튼 */
+        .back-btn { margin-top: 20px; padding: 10px 20px; background: white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="insta-viewer">
+        <img src="02/01.jpg">
+        <img src="02/02.jpg">
+        <img src="02/03.jpg">
+        <img src="02/04.jpg">
+        <img src="02/05.jpg">
+        <img src="02/06.jpg">
+        <img src="02/07.jpg">
+        <img src="02/08.jpg">
+        <img src="02/09.jpg">
+        <img src="02/10.jpg">
+        <img src="02/11.jpg">
+        <img src="02/12.jpg">
+        <img src="02/13.jpg">
+        <img src="02/14.jpg">
+        <img src="02/15.jpg">
+        <img src="02/16.jpg">
+        <img src="02/17.jpg">
+        <img src="02/18.jpg">
+    </div>
+
+    <a href="index.html" class="back-btn">목록으로 돌아가기</a>
+
+</body>
+</html>
