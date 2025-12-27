@@ -5,85 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제 1화 보기</title>
     <style>
-        body { 
-            background: #222; 
-            margin: 0; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            overflow: hidden; 
-            font-family: sans-serif;
-        }
-
-        .viewer-wrapper {
-            position: relative;
-            height: 85vh;        
-            aspect-ratio: 4/5;   
-            max-width: 95vw;     
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .insta-viewer {
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;      
-            overflow-x: hidden; 
-            scroll-snap-type: x mandatory; 
-            scroll-behavior: smooth;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8); 
-        }
-
-        .insta-viewer img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            flex-shrink: 0;
-            scroll-snap-align: start; 
-        }
-
-        .nav-btn {
-            position: absolute; 
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            transition: 0.3s;
-        }
+        body { background: #222; margin: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; font-family: sans-serif; }
+        .viewer-wrapper { position: relative; height: 85vh; aspect-ratio: 4/5; max-width: 95vw; display: flex; align-items: center; justify-content: center; }
+        .insta-viewer { width: 100%; height: 100%; background: white; display: flex; overflow-x: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        .insta-viewer img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; scroll-snap-align: start; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.3); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .nav-btn:hover { background: rgba(0, 0, 0, 0.8); color: yellow; }
-        
         .prev { left: 10px; } 
         .next { right: 10px; }
-
-        .back-btn { 
-            position: absolute;
-            bottom: 20px;
-            padding: 10px 20px; 
-            background: white; 
-            color: black; 
-            text-decoration: none; 
-            border-radius: 20px; 
-            font-weight: bold; 
-            font-size: 14px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            opacity: 0.7; 
-            transition: 0.3s;
-        }
+        .back-btn { position: absolute; bottom: 20px; padding: 10px 20px; background: white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); opacity: 0.7; transition: 0.3s; }
         .back-btn:hover { opacity: 1; transform: scale(1.05); }
     </style>
 </head>
@@ -92,19 +22,19 @@
     <div class="viewer-wrapper">
         <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
 
-        <div class="insta-viewer">
-            <img src="00/01_01.jpg" alt="1p">
-            <img src="00/01_02.jpg" alt="2p">
-            <img src="00/01_03.jpg" alt="3p">
-            <img src="00/01_04.jpg" alt="4p">
-            <img src="00/01_05.jpg" alt="5p">
-            <img src="00/01_06.jpg" alt="6p">
-            <img src="00/01_07.jpg" alt="7p">
-            <img src="00/01_08.jpg" alt="8p">
-            <img src="00/01_09.jpg" alt="9p">
-            <img src="00/01_10.jpg" alt="10p">
-            </div>
-        
+        <div class="insta-viewer" id="comicBox">
+            <img src="01/01_01.jpg" alt="1p">
+            <img src="01/01_02.jpg" alt="2p">
+            <img src="01/01_03.jpg" alt="3p">
+            <img src="01/01_04.jpg" alt="4p">
+            <img src="01/01_05.jpg" alt="5p">
+            <img src="01/01_06.jpg" alt="6p">
+            <img src="01/01_07.jpg" alt="7p">
+            <img src="01/01_08.jpg" alt="8p">
+            <img src="01/01_09.jpg" alt="9p">
+            <img src="01/01_10.jpg" alt="10p">
+        </div>
+
         <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 
@@ -116,12 +46,10 @@
             const slideWidth = viewer.clientWidth;
             viewer.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
         }
-        
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowRight') moveSlide(1);
             if (event.key === 'ArrowLeft') moveSlide(-1);
         });
     </script>
-
 </body>
 </html>
