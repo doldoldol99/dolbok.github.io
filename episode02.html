@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제 2화 보기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        body { background: #222; margin: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; font-family: sans-serif; }
+        body { background: #222; margin: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; font-family: 'Noto Sans KR', sans-serif; }
         .viewer-wrapper { position: relative; height: 85vh; aspect-ratio: 4/5; max-width: 95vw; display: flex; align-items: center; justify-content: center; }
         .insta-viewer { width: 100%; height: 100%; background: white; display: flex; overflow-x: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
         .insta-viewer img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; scroll-snap-align: start; }
@@ -15,6 +19,22 @@
         .next { right: 10px; }
         .back-btn { position: absolute; bottom: 20px; padding: 10px 20px; background: white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); opacity: 0.7; transition: 0.3s; }
         .back-btn:hover { opacity: 1; transform: scale(1.05); }
+        /* 📱 모바일 전용 설정 (화면이 768px보다 작으면 작동) */
+        @media (max-width: 768px) {
+            .viewer-wrapper {
+                width: 100vw;       /* 가로 너비: 화면 끝까지 꽉 채움 */
+                max-width: 100%;    /* 제한 없음 */
+                height: auto;       /* 높이는 비율에 맞춰 자동 조절 */
+                aspect-ratio: 4/5;  /* 4:5 비율은 유지 */
+            }
+            
+            /* 모바일에서는 화살표 버튼을 더 잘 보이게 */
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                background: rgba(0,0,0,0.6); /* 좀 더 진하게 */
+            }
+        }
     </style>
 </head>
 <body>
@@ -61,4 +81,5 @@
     </script>
 </body>
 </html>
+
 
