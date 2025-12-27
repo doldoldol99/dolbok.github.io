@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actopia의 만화 세상</title>
+    <title>Actopia</title>
     <style>
         /* 1. 전체적인 디자인 */
         body { 
@@ -42,6 +42,18 @@
         .insta-btn:hover { 
             transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
             opacity: 0.9; 
+        }
+        
+        /* 이메일 글자 디자인 */
+        .email-text {
+            margin-top: 20px;      /* 버튼이랑 간격 띄우기 */
+            font-size: 14px;       /* 글자 크기 */
+            color: #666;           /* 너무 까맣지 않은 회색 */
+            font-weight: bold;     /* 글자 굵게 */
+            background-color: #f9f9f9; /* 아주 연한 회색 배경 */
+            padding: 10px;         /* 글자 주변 여백 */
+            border-radius: 10px;   /* 모서리 둥글게 */
+            display: inline-block; /* 글자 길이만큼만 배경색 칠하기 */
         }
         
         /* 2. 상단 메뉴바 */
@@ -132,12 +144,16 @@
         <h2 id="about">👋 내 소개</h2>
         <img src="profile.jpg" alt="내 프로필" class="profile-img">
         <div class="text-box">
-            <p>안녕하세요! <strong>Actopia</strong>의 개인 웹사이트입니다.</p>
+            <p>안녕하세요! <strong> '악당들은 유토피아를 꿈꾼다'(악토피아) </strong>의 개인 웹사이트입니다.</p>
             <p>이곳에 제 인스타 툰 스타일의 만화를 업로드합니다.</p>
             <p>재밌게 봐주세요!</p>
             <a href="https://www.instagram.com/dol_bok" target="_blank" class="insta-btn">
                 📸 Instagram 구경가기
             </a>
+            <br>
+            <div class="email-text">
+                📧 Contact: yw3016@naver.com
+            </div>
         </div>
         
         <h2 id="comics">🎨 만화 목록</h2>
@@ -145,17 +161,17 @@
             
             <div class="comic-item" onclick="location.href='episode00.html'">
                 <img src="00/cover.jpg" alt="0화 표지">
-                <p>EP.00 프롤로그</p>
+                <p>EP.00 악당들은 유토피아를 꿈꾼다</p>
             </div>
 
             <div class="comic-item" onclick="location.href='episode01.html'">
                 <img src="01/cover.jpg" alt="1화 표지">
-                <p>EP.01 시작</p>
+                <p>EP.01 나뭇가지</p>
             </div>
 
             <div class="comic-item" onclick="location.href='episode02.html'">
                 <img src="02/cover.jpg" alt="2화 표지">
-                <p>EP.02 전개</p>
+                <p>EP.02 동물을 사랑하긴 하는데.</p>
             </div>
 
         </div>
@@ -171,5 +187,6 @@
 </body>
 
 </html>
+
 
 
