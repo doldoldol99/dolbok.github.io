@@ -1,65 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제 3화 보기</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+
     <style>
-        body { background: #222; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: white; }
+        body { 
+            background: #dcfcc9; /* 배경색: 연두색 */
+            color: #333; 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden; 
+            font-family: 'Noto Sans KR', sans-serif; 
+        }
+
+        /* 뷰어 전체 틀 */
+        .viewer-wrapper {
+            position: relative;
+            height: 85vh;        
+            aspect-ratio: 4/5;   
+            max-width: 95vw;     
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         
-        /* 인스타 툰 뷰어 틀 (핵심!) */
+        /* 만화 이미지가 보이는 박스 */
         .insta-viewer {
-            width: 350px;       /* 인스타 느낌의 너비 */
-            aspect-ratio: 4/5;  /* 4:5 비율 고정 */
+            width: 100%;
+            height: 100%;
             background: white;
-            
-            display: flex;      /* 가로로 배치 */
-            overflow-x: auto;   /* 넘치면 스크롤 생김 */
-            scroll-snap-type: x mandatory; /* 자석처럼 착착 붙는 기능 */
-            
+            display: flex;      
+            overflow-x: hidden; /* 스크롤바 숨김 */
+            scroll-snap-type: x mandatory; 
+            scroll-behavior: smooth;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
         }
 
-        /* 만화 이미지 각각의 설정 */
         .insta-viewer img {
-            width: 100%;       /* 틀에 꽉 차게 */
-            height: 100%;      /* 틀에 꽉 차게 */
-            object-fit: cover; /* 비율 유지하며 꽉 채움 */
-            flex-shrink: 0;    /* 찌그러짐 방지 */
-            scroll-snap-align: start; /* 스크롤할 때 시작점에 딱 붙음 */
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            flex-shrink: 0;
+            scroll-snap-align: start; 
         }
 
-        /* 뒤로가기 버튼 */
-        .back-btn { margin-top: 20px; padding: 10px 20px; background: white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; }
+        /* 화살표 버튼 */
+        .nav-btn {
+            position: absolute; 
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10; 
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: rgba(0, 0, 0, 0.8); color: yellow; }
+        
+        .prev { left: 10px; } 
+        .next { right: 10px; }
+
+        /* 목록으로 버튼 */
+        .back-btn { 
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px; 
+            background: white; 
+            color: #333; 
+            text-decoration: none; 
+            border-radius: 20px; 
+            font-weight: bold; 
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0.8; 
+            transition: 0.3s;
+        }
+        .back-btn:hover { opacity: 1; transform: scale(1.05); }
+
+        /* 📱 모바일 최적화 */
+        @media (max-width: 768px) {
+            .viewer-wrapper {
+                width: 100vw;
+                max-width: 100%;
+                height: auto;
+                aspect-ratio: 4/5;  
+                border-radius: 0;
+            }
+            .insta-viewer { border-radius: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="insta-viewer">
-        <img src="03/01.jpg">
-        <img src="03/02.jpg">
-        <img src="03/03.jpg">
-        <img src="03/04.jpg">
-        <img src="03/05.jpg">
-        <img src="03/06.jpg">
-        <img src="03/07.jpg">
-        <img src="03/08.jpg">
-        <img src="03/09.jpg">
-        <img src="03/10.jpg">
-        <img src="03/11.jpg">
-        <img src="03/12.jpg">
-        <img src="03/13.jpg">
-        <img src="03/14.jpg">
-        <img src="03/15.jpg">
-        <img src="03/16.jpg">
-        <img src="03/17.jpg">
-        <img src="03/18.jpg">
-        <img src="03/19.jpg">
-        <img src="03/20.jpg">
+    <div class="viewer-wrapper">
+        <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+
+        <div class="insta-viewer" id="comicBox">
+            <img src="03/01.jpg" alt="1p">
+            <img src="03/02.jpg" alt="2p">
+            <img src="03/03.jpg" alt="3p">
+            <img src="03/04.jpg" alt="4p">
+            <img src="03/05.jpg" alt="5p">
+            <img src="03/06.jpg" alt="6p">
+            <img src="03/07.jpg" alt="7p">
+            <img src="03/08.jpg" alt="8p">
+            <img src="03/09.jpg" alt="9p">
+            <img src="03/10.jpg" alt="10p">
+            <img src="03/11.jpg" alt="11p">
+            <img src="03/12.jpg" alt="12p">
+            <img src="03/13.jpg" alt="13p">
+            <img src="03/14.jpg" alt="14p">
+            <img src="03/15.jpg" alt="15p">
+            <img src="03/16.jpg" alt="16p">
+            <img src="03/17.jpg" alt="17p">
+            <img src="03/18.jpg" alt="18p">
+            <img src="03/19.jpg" alt="19p">
+            <img src="03/20.jpg" alt="20p">
+        </div>
+
+        <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 
     <a href="index.html" class="back-btn">목록으로 돌아가기</a>
+
+    <script>
+        function moveSlide(direction) {
+            const viewer = document.getElementById('comicBox');
+            const slideWidth = viewer.clientWidth;
+            viewer.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+        }
+        
+        // 키보드 방향키 조작
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') moveSlide(1);
+            if (event.key === 'ArrowLeft') moveSlide(-1);
+        });
+    </script>
 
 </body>
 </html>
