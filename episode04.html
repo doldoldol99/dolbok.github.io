@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제 4화 보기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { background: #222; margin: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; font-family: 'Noto Sans KR', sans-serif; }
+        .viewer-wrapper { position: relative; height: 85vh; aspect-ratio: 4/5; max-width: 95vw; display: flex; align-items: center; justify-content: center; }
+        .insta-viewer { width: 100%; height: 100%; background: white; display: flex; overflow-x: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        .insta-viewer img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; scroll-snap-align: start; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.3); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 24px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .nav-btn:hover { background: rgba(0, 0, 0, 0.8); color: yellow; }
+        .prev { left: 10px; } 
+        .next { right: 10px; }
+        .back-btn { position: absolute; bottom: 20px; padding: 10px 20px; background: white; color: black; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); opacity: 0.7; transition: 0.3s; }
+        .back-btn:hover { opacity: 1; transform: scale(1.05); }
+        /* 📱 모바일 전용 설정 (화면이 768px보다 작으면 작동) */
+        @media (max-width: 768px) {
+            .viewer-wrapper {
+                width: 100vw;       /* 가로 너비: 화면 끝까지 꽉 채움 */
+                max-width: 100%;    /* 제한 없음 */
+                height: auto;       /* 높이는 비율에 맞춰 자동 조절 */
+                aspect-ratio: 4/5;  /* 4:5 비율은 유지 */
+            }
+            
+            /* 모바일에서는 화살표 버튼을 더 잘 보이게 */
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                background: rgba(0,0,0,0.6); /* 좀 더 진하게 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="viewer-wrapper">
+        <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+
+        <div class="insta-viewer" id="comicBox">
+            <img src="04/01.jpg" alt="1p">
+            <img src="04/02.jpg" alt="2p">
+            <img src="04/03.jpg" alt="3p">
+            <img src="04/04.jpg" alt="4p">
+            <img src="04/05.jpg" alt="5p">
+            <img src="04/06.jpg" alt="6p">
+            <img src="04/07.jpg" alt="7p">
+            <img src="04/08.jpg" alt="8p">
+            <img src="04/09.jpg" alt="9p">
+            <img src="04/10.jpg" alt="10p">
+            <img src="04/11.jpg" alt="11p">
+            <img src="04/12.jpg" alt="12p">
+            <img src="04/13.jpg" alt="13p">
+            <img src="04/14.jpg" alt="14p">
+            <img src="04/15.jpg" alt="15p">
+        </div>
+
+        <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <a href="index.html" class="back-btn">목록으로</a>
+
+    <script>
+        function moveSlide(direction) {
+            const viewer = document.getElementById('comicBox');
+            const slideWidth = viewer.clientWidth;
+            viewer.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') moveSlide(1);
+            if (event.key === 'ArrowLeft') moveSlide(-1);
+        });
+    </script>
+</body>
+</html>
+
